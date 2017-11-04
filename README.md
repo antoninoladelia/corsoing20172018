@@ -1,4 +1,4 @@
-Add to
+Add to 
 	In C:\xampp\apache\conf\httpd.conf
 	
 	Enable 2 modules:
@@ -10,7 +10,6 @@ Add to
 		
 			<VirtualHost *:80>
 				ProxyPreserveHost On
-
 				# Servers to proxy the connection, or;
 				# List of application servers:
 				# Usage:

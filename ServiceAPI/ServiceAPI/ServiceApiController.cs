@@ -21,7 +21,7 @@ namespace ServiceAPI
         {
             lock (setupLock)
             {
-                using (var context = new StudentsDbContext())
+                using (var context = new PrisonDbContext())
                 {
                     // Create database
                     context.Database.EnsureCreated();
@@ -31,16 +31,16 @@ namespace ServiceAPI
         }
 
 
-        [HttpGet("students")]
-        public async Task<IActionResult> GetStudents()
+        [HttpGet("prisoners")]
+        public async Task<IActionResult> GetPrisoners()
         {
             try
             {
                 await parallelism.WaitAsync();
 
-                using (var context = new StudentsDbContext())
+                using (var context = new PrisonDbContext())
                 {
-                    return Ok(await context.Students.ToListAsync());
+                    return Ok(await context.Prisoners.ToListAsync());
                 }
             }
             finally
@@ -49,21 +49,14 @@ namespace ServiceAPI
             }
         }
 
-        [HttpGet("student")]
-        public async Task<IActionResult> GetStudent([FromQuery]int id)
-        {
-            using (var context = new StudentsDbContext())
-            {
-                return Ok(await context.Students.FirstOrDefaultAsync(x => x.Id == id));
-            }
-        }
 
-        [HttpPut("students")]
-        public async Task<IActionResult> CreateStudent([FromBody]Student student)
+        [HttpPut("prisoners")]
+        public async Task<IActionResult> CreatePrisoner([FromBody]Prisoner prisoner)
         {
-            using (var context = new StudentsDbContext())
+            using (var context = new PrisonDbContext())
             {
-                context.Students.Add(student);
+                context.Prisoners.Add(prisoner);
+                
 
                 await context.SaveChangesAsync();
 
@@ -71,25 +64,25 @@ namespace ServiceAPI
             }
         }
 
-        [HttpPost("students")]
-        public async Task<IActionResult> UpdateStudent([FromBody]Student student)
+        [HttpPost("prisoners")]
+        public async Task<IActionResult> UpdateStudent([FromBody]Prisoner prisoner)
         {
-            using (var context = new StudentsDbContext())
+            using (var context = new PrisonDbContext())
             {
-                context.Students.Update(student);
+                context.Prisoners.Update(prisoner);
                 await context.SaveChangesAsync();
                 return Ok();
             }
         }
 
 
-        [HttpDelete("students")]
-        public async Task<IActionResult> DeleteStudent([FromQuery]int id)
+        [HttpDelete("prisoners")]
+        public async Task<IActionResult> DeletePrisoner([FromQuery]int id)
         {
-            using (var context = new StudentsDbContext())
+            using (var context = new PrisonDbContext())
             {
-                var student = await context.Students.FirstOrDefaultAsync(x => x.Id == id);
-                context.Students.Remove(student);
+                var prisoner = await context.Prisoners.FirstOrDefaultAsync(x => x.Id == id);
+                context.Prisoners.Remove(prisoner);
                 await context.SaveChangesAsync();
                 return Ok();
 

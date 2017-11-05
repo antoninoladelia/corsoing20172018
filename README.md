@@ -1,4 +1,29 @@
-Add to 
+To import the database you must:
+1)Open a browser window and type "localhost"
+2)Open PhpMyAdmin
+3)Click on import 
+4)Chooise "database.sql"
+5)Click run.
+
+(User = root , with no password)
+
+
+Setup enviroment
+
+1)install nodejs
+
+2)open project folder "SuperCoolApp", open a  powershell(shift+dx mouse click), and type npm install
+
+
+To run the program
+1)Run ServiceAPI
+
+2)Run SuperCoolApp
+
+
+
+
+Add to
 	In C:\xampp\apache\conf\httpd.conf
 	
 	Enable 2 modules:
@@ -10,6 +35,7 @@ Add to
 		
 			<VirtualHost *:80>
 				ProxyPreserveHost On
+
 				# Servers to proxy the connection, or;
 				# List of application servers:
 				# Usage:

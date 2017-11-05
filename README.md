@@ -1,3 +1,7 @@
+The project is that was stipulated, the managing of a prison. The project presents two parts back-end and front-end.
+First part have been adapted two controllers for the http requests, one for the prisoners the other one for the cells.
+In the front-end has been implemented CRUD system (POST,GET,UPDATE,DELETE) using http request method.
+
 To import the database you must:
 
 1)Open a browser window and type "localhost"
@@ -10,7 +14,7 @@ To import the database you must:
 
 5)Click run.
 
-(User = root , with no password)
+(User = root , without password)
 
 
 Setup enviroment
@@ -21,6 +25,7 @@ Setup enviroment
 
 
 To run the program
+
 1)Run ServiceAPI
 
 2)Run SuperCoolApp
